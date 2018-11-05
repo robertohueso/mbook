@@ -1,5 +1,17 @@
 {% extends 'base.html' %}
 
 {% block body %}
-  Hi :)
+<br></br>
+<form class="row form-inline">
+  <div class="col form-group">
+    <label class="col-auto col-form-label-lg" for="searchQuery">Title</label>
+    <input type="search" class="col form-control form-control-lg" id="searchQuery" placeholder="The Da Vinci Code">
+    <button type="submit" class="col-auto ml-2 btn btn-primary btn-lg"><span class="fa fa-search"></span></button>
+  </div>
+</form>
+<br></br>
+<div class="row jumbotron">
+  <h1 class="display-4">Watch the movie or read the book?</h1>
+  <p class="lead">Find out with mobook what people think about movies and books and enjoy the best version of each story.</p>
+</div>
 {% endblock %}
