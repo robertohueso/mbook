@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block body %}
+<br>
+<div class="row">
+  <h2>Results for {{ cont['query'] }}</h2>
+</div>
+<div class="row container">
+  <div class="col">
+    {% include 'includes/movie.html' %}
+  </div>
+  <div class="col">
+    {% include 'includes/book.html' %}
+  </div>
+</div>
+{% endblock %}
