@@ -1,7 +1,11 @@
 <div class="container">
   <h3>Movie</h3>
+  {% for movie in cont['movie']  %}
   <ul class="list-group">
-    <li class="list-group-item">{{ cont['m_title'] }}</li>
-    <li class="list-group-item">{{ cont['m_year'] }}</li>
+    <li class="list-group-item">{{ movie['m_title'] }}</li>
+    <li class="list-group-item">Year: {{ movie['m_year'] }}</li>
+    <li class="list-group-item">Genre: {{ movie['m_genre'] }}</li>
+    <li class="list-group-item">Rating: {{ movie['m_rating'] }}</li>
   </ul>
+  {% endfor %}
 </div>

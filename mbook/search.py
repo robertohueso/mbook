@@ -15,15 +15,23 @@ def search():
 def results():
     if request.args.get('searchQuery', None):
         context = {}
+        context['movie'] = []
+        context['book'] = []
         query = str(request.args['searchQuery'])
         context['query'] = query
-        qres = rdf.search(query)
-        for row in qres:
-            context['m_title'] = row['m_title']
-            context['m_year'] = row['m_year']
-            context['m_genre'] = row['m_genre']
-            context['b_title'] = row['b_title']
-            context['b_author'] = row['b_author']
+        mres, bres = rdf.search(query)
+        for row in mres:
+            new_mov = {}
+            new_mov['m_title'] = row['m_title']
+            new_mov['m_year'] = row['m_year']
+            new_mov['m_genre'] = row['m_genre']
+            new_mov['m_rating'] = row['m_rating']
+            context['movie'].append(new_mov)
+        for row in bres:
+            new_book = {}
+            new_book['b_title'] = row['b_title']
+            new_book['b_rating'] = row['b_rating']
+            context['book'].append(new_book)
         return render_template('results.html', cont=context)
     else:
         return redirect(url_for('search.search'))
