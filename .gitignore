@@ -1,3 +1,5 @@
+# Ignore data files
+mbook/data
 
 # Created by https://www.gitignore.io/api/venv,emacs,linux,macos,python,pycharm,windows,jupyternotebook
 # Edit at https://www.gitignore.io/?templates=venv,emacs,linux,macos,python,pycharm,windows,jupyternotebook
