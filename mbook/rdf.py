@@ -59,7 +59,7 @@ def search(title):
     queryTitle = rdflib.Literal(title)
     mres = get_movies_graph().query(m_q,
                                     initBindings={'q_title': queryTitle})
-    #bres = get_books_graph().query(b_q,
-    #                               initBindings={'q_title': queryTitle})
-    bres = []
+    bres = get_books_graph().query(b_q,
+                                   initBindings={'q_title': queryTitle})
+    #bres = []
     return mres, bres
