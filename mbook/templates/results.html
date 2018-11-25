@@ -1,5 +1,9 @@
 {% extends 'base.html' %}
 
+{% block title %}
+Results {{ cont['query'] }}
+{% endblock %}
+
 {% block body %}
 <div class="row border-bottom mb-3">
   <h2>Results for "{{ cont['query'] }}"</h2>
