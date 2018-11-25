@@ -7,16 +7,18 @@ from flask import current_app, g
 from flask.cli import with_appcontext
 
 def get_movies_graph():
-    if 'm_graph' not in g:
-        g.m_graph = rdflib.Graph()
-        g.m_graph.parse('mbook/data/movies.ttl', format="n3")
-    return g.m_graph
+    if 'm_graph' not in current_app.config:
+        current_app.config['m_graph'] = rdflib.Graph()
+        current_app.config['m_graph'].parse('mbook/data/movies.ttl',
+                                            format="n3")
+    return current_app.config['m_graph']
 
 def get_books_graph():
-    if 'b_graph' not in g:
-        g.b_graph = rdflib.Graph()
-        g.b_graph.parse('mbook/data/book_reviews.ttl', format="n3")
-    return g.b_graph
+    if 'b_graph' not in current_app.config:
+        current_app.config['b_graph'] = rdflib.Graph()
+        current_app.config['b_graph'].parse('mbook/data/book_reviews.ttl',
+                                            format="n3")
+    return current_app.config['b_graph']
 
 def search(title):
     # Movie query
@@ -53,4 +55,5 @@ def search(title):
                                     initBindings={'q_title': queryTitle})
     bres = get_books_graph().query(b_q,
                                    initBindings={'q_title': queryTitle})
+    #bres = []
     return mres, bres
