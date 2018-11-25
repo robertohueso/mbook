@@ -3,7 +3,7 @@
   {% for book in cont['book']  %}
   <ul class="list-group mb-3 text-white">
     <li class="list-group-item bg-secondary"><b>{{ book['b_title'] }}</b></li>
-    <li class="list-group-item bg-secondary"><b>Rating:</b> {{ book['b_rating'] }}</li>
+    <li class="list-group-item bg-secondary"><b>Rating:</b> {{ book['b_rating'] }} <span class="fa fa-star"></span> / 5</li>
   </ul>
   {% endfor %}
 </div>
