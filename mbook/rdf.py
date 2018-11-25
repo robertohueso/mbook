@@ -24,7 +24,13 @@ def search(title):
     # Movie query
     m_q = prepareQuery(
           """
-          SELECT ?movie ?m_title ?m_year ?m_genre ?m_rating ?b_title ?b_rating
+          SELECT ?movie
+                 ?m_title
+                 ?m_year
+                 (group_concat(distinct ?m_genre;separator=", ") as ?m_genres)
+                 ?m_rating
+                 ?b_title
+                 ?b_rating
           WHERE {
               ?movie rdfs:label ?m_title .
               ?movie dc:date ?m_year .
@@ -53,7 +59,7 @@ def search(title):
     queryTitle = rdflib.Literal(title)
     mres = get_movies_graph().query(m_q,
                                     initBindings={'q_title': queryTitle})
-    bres = get_books_graph().query(b_q,
-                                   initBindings={'q_title': queryTitle})
-    #bres = []
+    #bres = get_books_graph().query(b_q,
+    #                               initBindings={'q_title': queryTitle})
+    bres = []
     return mres, bres

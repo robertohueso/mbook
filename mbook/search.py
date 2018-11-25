@@ -24,7 +24,7 @@ def results():
             new_mov = {}
             new_mov['m_title'] = row['m_title']
             new_mov['m_year'] = row['m_year']
-            new_mov['m_genre'] = row['m_genre']
+            new_mov['m_genre'] = row['m_genres']
             new_mov['m_rating'] = row['m_rating']
             context['movie'].append(new_mov)
         for row in bres:
