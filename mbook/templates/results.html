@@ -1,16 +1,21 @@
 {% extends 'base.html' %}
 
 {% block body %}
-<br>
-<div class="row">
-  <h2>Results for {{ cont['query'] }}</h2>
+<div class="row border-bottom mb-3">
+  <h2>Results for "{{ cont['query'] }}"</h2>
 </div>
+{% if cont['movie']|length == 0 and cont['book']|length == 0 %}
+<div class="container row alert alert-danger" role="alert">
+  No results found for "{{ cont['query'] }}"
+</div>
+{% else %}
 <div class="row container">
-  <div class="col">
+  <div class="col border-right">
     {% include 'includes/movie.html' %}
   </div>
   <div class="col">
     {% include 'includes/book.html' %}
   </div>
 </div>
+{% endif %}
 {% endblock %}
